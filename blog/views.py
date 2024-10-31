@@ -8,8 +8,6 @@ def post_list(request):
     paginator = Paginator(post_lst, 2)
     page_number = request.GET.get('page', 1)
     posts = paginator.page(page_number)
-
-
     return render(request,
                   'blog/post/list.html',
                   {'posts': posts})
@@ -26,5 +24,3 @@ def post_detail(request, year, month, day, post):
     return render(request,
                   'blog/post/detail.html',
                   {'post': post})
-
-

@@ -1,5 +1,6 @@
 from pathlib import Path
 from environs import  Env
+import dj_database_url
 
 env = Env()
 env.read_env()
@@ -54,12 +55,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'myblog',
+#         'USER': 'blog',
+#         'PASSWORD': '1987',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': env.dj_db_url('DATABASE_URL')
 }
+
+DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
 
 
 AUTH_PASSWORD_VALIDATORS = [
