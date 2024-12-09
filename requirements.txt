@@ -3,3 +3,4 @@ environs==11.0.0
 psycopg-binary==3.2.3
 psycopg2==2.9.10
 dj-database-url==2.3.0
+djangorestframework==3.15.2
